@@ -23,8 +23,8 @@ export default function getCoachData() {
         },
         {
             id: 4,
-            name: "Паулу Феррейра",
-            age: '44', 
+            name: "Фернандо Торрес",
+            age: '40', 
             online: true,
             position: "Защитник"
         },
