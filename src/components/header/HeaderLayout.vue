@@ -37,7 +37,7 @@ defineEmits(['update:modelValue']);
       </div>
       <div class="relative" @click="toggleDropdown">
         <div>
-          <!-- User Profile Image -->
+          <!-- Expected User Profile Image -->
         </div>
         <div class="flex items-center gap-2 cursor-pointer">
           <span class="text-white">{{ userName }}</span>

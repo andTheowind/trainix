@@ -8,10 +8,12 @@
             <div class="flex items-center gap-x-4">
                 <span class="block text-[#8D8BA2]">andTheowind © 2025</span>
             </div>
-            <div class="flex items-center gap-x-4">
-                <a href="#" class="block text-[#8D8BA2]">Политика конфиденциальности</a>
-                <a href="#" class="block text-[#8D8BA2]">Контакты</a>
-                <a href="#" class="block text-[#8D8BA2]">Ещё</a>
+            <div class="flex items-center gap-x-3">
+                <nav class="flex items-center gap-x-4 text-[#8D8BA2]">
+                    <a href="#" class="block">Политика конфиденциальности</a>
+                    <a href="#" class="block">Контакты</a>
+                    <a href="#" class="block">Ещё</a>
+                </nav>
                 <ul class="flex items-center gap-3">
                     <li class="flex items-center">
                         <a href="#">
