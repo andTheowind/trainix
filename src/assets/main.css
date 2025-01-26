@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.before-content::before {
+    content: " ";
+}
+
+.after-content::after {
+    content: " ";
+}
