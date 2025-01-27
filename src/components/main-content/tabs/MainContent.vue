@@ -1,11 +1,11 @@
 <script setup>
-import InformPlate from '@/components/main-content/tabs/main-tab-content/InformPlate.vue'
-import HeroSection from '@/components/main-content/tabs/main-tab-content/HeroSection.vue'
-import AboutRequests from '@/components/main-content/tabs/main-tab-content/AboutRequests.vue'
-import UserProfile from '@/components/main-content/tabs/UserProfile.vue'
-import SearchArea from '@/components/main-content/search/SearchArea.vue'
-import UserSettings from '@/components/main-content/tabs/UserSettings.vue'
-import SupportContacts from '@/components/main-content/tabs/SupportContacts.vue'
+import InformPlate from '@/components/main-content/tabs/main-tab-content/InformPlate.vue';
+import HeroSection from '@/components/main-content/tabs/main-tab-content/HeroSection.vue';
+import AboutRequests from '@/components/main-content/tabs/main-tab-content/AboutRequests.vue';
+import UserProfile from '@/components/main-content/tabs/UserProfile.vue';
+import SearchArea from '@/components/main-content/search/SearchArea.vue';
+import UserSettings from '@/components/main-content/tabs/UserSettings.vue';
+import SupportContacts from '@/components/main-content/tabs/SupportContacts.vue';
 
 const props = defineProps({
     currentWindow: {
@@ -14,7 +14,7 @@ const props = defineProps({
     }
 })
 
-console.log(props.currentWindow)
+console.log(props.currentWindow);
 </script>
 
 <template>

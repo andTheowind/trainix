@@ -1,13 +1,13 @@
 <script setup>
-import { ref } from 'vue'
-import HeaderLayout from '@/components/header/HeaderLayout.vue'
-import MainLayout from '@/components/MainLayout.vue'
-import FooterLayout from './components/footer/FooterLayout.vue';
+import { ref } from 'vue';
+import HeaderLayout from '@/components/header/HeaderLayout.vue';
+import MainLayout from '@/components/MainLayout.vue';
+import FooterLayout from '@/components/footer/FooterLayout.vue';
 
-const currentWindow = ref('Главная')
+const currentWindow = ref('Главная');
 
 const setCurrentWindow = (namePage) => {
-  currentWindow.value = namePage
+  currentWindow.value = namePage;
 }
 </script>
 

@@ -1,7 +1,7 @@
 <script setup>
 import SideBar from '@/components/sidebar/SideBar.vue';
 import MainContent from '@/components/main-content/tabs/MainContent.vue';
-import UserNameModal from '@/components/main-content/UserNameModal.vue'
+import UserNameModal from '@/components/main-content/UserNameModal.vue';
 
 defineEmits(['update:modelValue']);
 const props = defineProps({

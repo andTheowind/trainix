@@ -1,13 +1,12 @@
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
 
-const firstName = ref(localStorage.getItem('name'))
-const lastName = ref(localStorage.getItem('surname'))
+const firstName = ref(localStorage.getItem('name'));
+const lastName = ref(localStorage.getItem('surname'));
 
 const changeUserName = (data) => {
-    console.log(data)
-    const newFirstName = data.target[0].value
-    const newLastName = data.target[1].value
+    const newFirstName = data.target[0].value;
+    const newLastName = data.target[1].value;
 
     localStorage.setItem('userInfo', JSON.stringify(
         {
@@ -41,7 +40,6 @@ const changeUserName = (data) => {
                     </div>
                 </form>
             </div>
-
         </div>
     </div>
 </template>

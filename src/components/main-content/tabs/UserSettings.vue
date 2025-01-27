@@ -1,18 +1,18 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed } from 'vue';
 
-const isDropdownLangVisible = ref(false)
-const selectedLang = ref(localStorage.getItem('selectedLang') || 'Русский')
-const timeNow = ref(new Date().toLocaleTimeString('ru-RU', { hour: 'numeric', minute: 'numeric' }))
+const isDropdownLangVisible = ref(false);
+const selectedLang = ref(localStorage.getItem('selectedLang') || 'Русский');
+const timeNow = ref(new Date().toLocaleTimeString('ru-RU', { hour: 'numeric', minute: 'numeric' }));
 
 const toggleDropdownLang = () => {
-    isDropdownLangVisible.value = !isDropdownLangVisible.value
+    isDropdownLangVisible.value = !isDropdownLangVisible.value;
 }
 
 const selectLang = (lang) => {
-    selectedLang.value = lang
-    localStorage.setItem('selectedLang', lang)
-    isDropdownLangVisible.value = false
+    selectedLang.value = lang;
+    localStorage.setItem('selectedLang', lang);
+    isDropdownLangVisible.value = false;
 }
 
 const currentFlagPath = computed(() => {
@@ -20,7 +20,7 @@ const currentFlagPath = computed(() => {
         'Русский': 'russia-lang.png',
         'English': 'english-lang.png',
     }
-    return `/src/assets/icons/${langToFlagMap[selectedLang.value] || 'default-lang.png'}`
+    return `/src/assets/icons/${langToFlagMap[selectedLang.value] || 'default-lang.png'}`;
 })
 
 </script>

@@ -1,8 +1,8 @@
 <script setup>
-import IconSet from '@/components/icons/IconsSet.vue'
+import IconSet from '@/components/icons/IconsSet.vue';
 import { ref, watch } from 'vue';
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:modelValue']);
 
 const props = defineProps({
     currentWindow: {
@@ -17,9 +17,9 @@ const handleClick = (page) => {
 
 const currentWindow = ref(props.currentWindow)
 watch(() => props.currentWindow, (newValue) => {
-    currentWindow.value = newValue
+    currentWindow.value = newValue;
 })
-console.log(currentWindow)
+console.log(currentWindow);
 </script>
 
 <template>

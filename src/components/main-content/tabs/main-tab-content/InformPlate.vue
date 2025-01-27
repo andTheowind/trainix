@@ -1,22 +1,22 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-const userName = ref('')
-const isVisible = ref(true)
+import { ref, onMounted } from 'vue';
+const userName = ref('');
+const isVisible = ref(true);
 
 const updateUserName = () => {
-    const storedUserInfo = localStorage.getItem('userInfo')
+    const storedUserInfo = localStorage.getItem('userInfo');
     if (storedUserInfo) {
-        const { name, surname } = JSON.parse(storedUserInfo)
-        userName.value = `${surname} ${name}`
+        const { name, surname } = JSON.parse(storedUserInfo);
+        userName.value = `${surname} ${name}`;
     }
 }
 
 window.addEventListener('storage_userInfo', () => {
-    updateUserName()
+    updateUserName();
 })
 
 onMounted(() => {
-    updateUserName()
+    updateUserName();
 })
 
 const hideBlock = () => {
