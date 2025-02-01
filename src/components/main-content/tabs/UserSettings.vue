@@ -1,27 +1,46 @@
-<script setup>
-import { ref, computed } from 'vue';
+<script>
 
-const isDropdownLangVisible = ref(false);
-const selectedLang = ref(localStorage.getItem('selectedLang') || 'Русский');
-const timeNow = ref(new Date().toLocaleTimeString('ru-RU', { hour: 'numeric', minute: 'numeric' }));
+export default {
+    data() {
+        return {
+            langs: [{
+                code: 'ru', name: 'Русский', icon: {
+                    src: new URL('@/assets/icons/russia-lang.png', import.meta.url).href,
+                    alt: 'Russian Flag'
+                }
+            }, {
+                code: 'en', name: "English", icon: {
+                    src: new URL('@/assets/icons/english-lang.png', import.meta.url).href,
+                    alt: 'English Flag'
+                }
+            }],
+            isDropdownLangVisible: false,
+            selectedLang: localStorage.getItem('selectedLang') || 'Русский',
+            timeNow: new Date().toLocaleTimeString('ru-RU', { hour: 'numeric', minute: 'numeric' }),
+        }
+    },
+    methods: {
+        toggleDropdownLang() {
+            this.isDropdownLangVisible = !this.isDropdownLangVisible;
+        },
 
-const toggleDropdownLang = () => {
-    isDropdownLangVisible.value = !isDropdownLangVisible.value;
-}
-
-const selectLang = (lang) => {
-    selectedLang.value = lang;
-    localStorage.setItem('selectedLang', lang);
-    isDropdownLangVisible.value = false;
-}
-
-const currentFlagPath = computed(() => {
-    const langToFlagMap = {
-        'Русский': 'russia-lang.png',
-        'English': 'english-lang.png',
+        selectLang(lang) {
+            this.selectedLang = lang;
+            localStorage.setItem('selectedLang', lang);
+            this.isDropdownLangVisible = false;
+        }
+    },
+    computed: {
+        currentFlagPath() {
+            const langToFlagMap = {
+                'Русский': 'russia-lang.png',
+                'English': 'english-lang.png',
+            }
+            return `/src/assets/icons/${langToFlagMap[this.selectedLang] || 'default-lang.png'}`;
+        }
     }
-    return `/src/assets/icons/${langToFlagMap[selectedLang.value] || 'default-lang.png'}`;
-})
+}
+
 
 </script>
 
@@ -41,7 +60,7 @@ const currentFlagPath = computed(() => {
                     @click="toggleDropdownLang">
                     <p class="text-[#B4B4C4] text-lg pe-8">Язык</p>
                     <div>
-                        <img :src="currentFlagPath" :alt="selectedLang.value" class="w-6 h-6 rounded-full">
+                        <img :src="currentFlagPath" :alt="selectedLang" class="w-6 h-6 rounded-full">
                     </div>
                     <img src="@/assets/icons/arrow-down.svg" class="w-5 h-5 transition-transform duration-200"
                         :class="{ 'rotate-180': isDropdownLangVisible }">
@@ -51,20 +70,13 @@ const currentFlagPath = computed(() => {
                 <div v-if="isDropdownLangVisible"
                     class="absolute left-0 top-full mt-2 bg-[#1E1E2D] rounded-lg shadow-lg py-2 min-w-[200px] z-10">
                     <ul class="list-none p-0 m-0">
-                        <li @click="selectLang('Русский')" class="hover:bg-[#3A3A4A] cursor-pointer">
+                        <li v-for="item in langs" :key="item.code" @click="selectLang(item.name)"
+                            class="hover:bg-[#3A3A4A] cursor-pointer">
                             <div
                                 class="flex items-center gap-3 px-4 py-2 text-[#92929F] hover:text-white transition-colors">
-                                <img src="@/assets/icons/russia-lang.png" alt="Russian Flag"
+                                <img :src="item.icon.src" :alt="item.icon.alt"
                                     class="w-5 h-5 rounded-full">
-                                <span class="text-sm">Русский</span>
-                            </div>
-                        </li>
-                        <li @click="selectLang('English')" class="hover:bg-[#3A3A4A] cursor-pointer">
-                            <div
-                                class="flex items-center gap-3 px-4 py-2 text-[#92929F] hover:text-white transition-colors">
-                                <img src="@/assets/icons/english-lang.png" alt="English Flag"
-                                    class="w-5 h-5 rounded-full">
-                                <span class="text-sm">English</span>
+                                <span class="text-sm">{{ item.name }}</span>
                             </div>
                         </li>
                     </ul>

@@ -1,4 +1,4 @@
-<script setup>
+<script>
 import InformPlate from '@/components/main-content/tabs/main-tab-content/InformPlate.vue';
 import HeroSection from '@/components/main-content/tabs/main-tab-content/HeroSection.vue';
 import AboutRequests from '@/components/main-content/tabs/main-tab-content/AboutRequests.vue';
@@ -7,14 +7,23 @@ import SearchArea from '@/components/main-content/search/SearchArea.vue';
 import UserSettings from '@/components/main-content/tabs/UserSettings.vue';
 import SupportContacts from '@/components/main-content/tabs/SupportContacts.vue';
 
-const props = defineProps({
-    currentWindow: {
-        type: String,
-        required: true
+export default {
+    props: {
+        currentWindow: {
+            type: String,
+            required: true
+        }
+    },
+    components: {
+        InformPlate,
+        HeroSection,
+        AboutRequests,
+        UserProfile,
+        SearchArea,
+        UserSettings,
+        SupportContacts,
     }
-})
-
-console.log(props.currentWindow);
+}
 </script>
 
 <template>

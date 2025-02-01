@@ -1,18 +1,29 @@
-<script setup>
-import { ref } from 'vue';
+<script>
 import HeaderLayout from '@/components/header/HeaderLayout.vue';
 import MainLayout from '@/components/MainLayout.vue';
 import FooterLayout from '@/components/footer/FooterLayout.vue';
 
-const currentWindow = ref('Главная');
-
-const setCurrentWindow = (namePage) => {
-  currentWindow.value = namePage;
+export default {
+  components: {
+    HeaderLayout,
+    MainLayout,
+    FooterLayout
+  },
+  data() {
+    return {
+      currentWindow: 'Главная'
+    }
+  },
+  methods: {
+    setCurrentWindow(namePage) {
+      this.currentWindow = namePage;
+    }
+  }
 }
 </script>
 
 <template>
-  <HeaderLayout :currentWindow="currentWindow" @update:modelValue="setCurrentWindow" />
-  <MainLayout :currentWindow="currentWindow" @update:modelValue="setCurrentWindow" />
-  <FooterLayout />
+  <header-layout :currentWindow="currentWindow" @updateWindow="setCurrentWindow" />
+  <main-layout :currentWindow="currentWindow" @updateWindow="setCurrentWindow" />
+  <footer-layout />
 </template>

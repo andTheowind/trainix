@@ -1,20 +1,27 @@
-<script setup>
-import { ref } from 'vue';
-
-const firstName = ref(localStorage.getItem('name'));
-const lastName = ref(localStorage.getItem('surname'));
-
-const changeUserName = (data) => {
-    const newFirstName = data.target[0].value;
-    const newLastName = data.target[1].value;
-
-    localStorage.setItem('userInfo', JSON.stringify(
-        {
-            name: newFirstName,
-            surname: newLastName
+<script>
+export default {
+    data() {
+        return {
+            firstName: localStorage.getItem('name'),
+            lastName: localStorage.getItem('surname')
         }
-    ))
-    window.dispatchEvent(new Event('storage_userInfo'));
+    },
+    methods: {
+        changeUserName(data) {
+            const newFirstName = data.target[0].value;
+            const newLastName = data.target[1].value;
+
+            localStorage.setItem('userInfo', JSON.stringify(
+                {
+                    name: newFirstName,
+                    surname: newLastName
+                }
+            ))
+            this.firstName = newFirstName;
+            this.lastName = newLastName;
+            window.dispatchEvent(new Event('storage_userInfo'));
+        }
+    }
 }
 </script>
 

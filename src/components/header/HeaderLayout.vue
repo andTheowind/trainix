@@ -1,30 +1,33 @@
-<script setup>
-import { ref, onMounted } from 'vue'
-
-const isDropdownVisible = ref(false);
-const userName = ref('');
-
-const updateUserName = () => {
-  const storedUserInfo = localStorage.getItem('userInfo');
-  if (storedUserInfo) {
-    const { name, surname } = JSON.parse(storedUserInfo);
-    userName.value = `${surname} ${name}`;
+<script>
+export default {
+  data() {
+    return {
+      isDropdownVisible: false,
+      userName: ''
+    }
+  },
+  methods: {
+    updateUserName() {
+      const storedUserInfo = localStorage.getItem('userInfo');
+      if (storedUserInfo) {
+        const { name, surname } = JSON.parse(storedUserInfo);
+        this.userName = `${surname} ${name}`;
+      }
+    },
+    toggleDropdown() {
+      this.isDropdownVisible = !this.isDropdownVisible;
+    },
+    changeWindow(page){
+      this.$emit('updateWindow', page)
+    }
+  },
+  mounted() {
+    this.updateUserName();
+    window.addEventListener('storage_userInfo', () => {
+      this.updateUserName();
+    })
   }
 }
-
-window.addEventListener('storage_userInfo', () => {
-  updateUserName();
-})
-
-onMounted(() => {
-  updateUserName();
-})
-
-const toggleDropdown = () => {
-  isDropdownVisible.value = !isDropdownVisible.value;
-}
-
-defineEmits(['update:modelValue']);
 </script>
 
 <template>
@@ -48,13 +51,13 @@ defineEmits(['update:modelValue']);
           class="absolute right-0 top-full mt-2 bg-[#1E1E2D] rounded-lg shadow-lg py-2 min-w-[160px]">
           <ul class="list-none p-0 m-0">
             <li class="hover:bg-gray-700">
-              <a @click="$emit('update:modelValue', 'Мои настройки')" href="#"
+              <a @click="changeWindow('Мои настройки')" href="#"
                 class="block px-4 py-2 text-[#92929F] hover:text-white transition-colors">
                 Настройки
               </a>
             </li>
             <li class="hover:bg-gray-700">
-              <a @click="$emit('update:modelValue', 'Поддержка')" href="#"
+              <a @click="changeWindow('Поддержка')" href="#"
                 class="block px-4 py-2 text-[#92929F] hover:text-white transition-colors">
                 Поддержка
               </a>

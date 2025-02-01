@@ -1,26 +1,33 @@
-<script setup>
-import { ref, onMounted } from 'vue';
-const userName = ref('');
-const isVisible = ref(true);
+<script>
 
-const updateUserName = () => {
-    const storedUserInfo = localStorage.getItem('userInfo');
-    if (storedUserInfo) {
-        const { name, surname } = JSON.parse(storedUserInfo);
-        userName.value = `${surname} ${name}`;
+export default {
+    data() {
+        return {
+            userName: '',
+            isVisible: false
+        }
+    },
+    methods: {
+        updateUserName() {
+            const storedUserInfo = localStorage.getItem('userInfo');
+            if (storedUserInfo) {
+                const { name, surname } = JSON.parse(storedUserInfo);
+                this.userName = `${surname} ${name}`;
+            }
+        },
+        hideBlock() {
+            this.isVisible = false;
+        }
+    },
+    mounted() {
+        this.updateUserName();
+        window.addEventListener('storage', (event) => {
+            if (event.key === 'userInfo') {
+                this.updateUserName();
+            }
+        });
+        window.addEventListener('storage_userInfo', this.updateUserName);
     }
-}
-
-window.addEventListener('storage_userInfo', () => {
-    updateUserName();
-})
-
-onMounted(() => {
-    updateUserName();
-})
-
-const hideBlock = () => {
-    isVisible.value = false;
 }
 </script>
 

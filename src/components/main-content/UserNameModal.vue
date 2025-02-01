@@ -1,31 +1,35 @@
-<script setup>
-import { ref, onMounted } from 'vue';
-
-const isModalVisible = ref(false);
-const name = ref('');
-const surname = ref('');
-
-onMounted(() => {
-    const storedUserInfo = localStorage.getItem('userInfo');
-    if (storedUserInfo) {
-        const { name: storedName, surname: storedSurname } = JSON.parse(storedUserInfo);
-        name.value = storedName;
-        surname.value = storedSurname;
-    } else {
-        isModalVisible.value = true;
+<script>
+export default {
+    data() {
+        return {
+            isModalVisible: false,
+            name: '',
+            surname: ''
+        }
+    },
+    methods: {
+        handleSubmit() {
+            if (this.name && this.surname) {
+                const userInfo = { name: this.name, surname: this.surname };
+                localStorage.setItem('userInfo', JSON.stringify(userInfo));
+                this.isModalVisible = false;
+                window.dispatchEvent(new Event('storage_userInfo'));
+            } else {
+                alert('Введите имя и фамилию');
+            }
+        }
+    },
+    beforeMount() {
+        const storedUserInfo = localStorage.getItem('userInfo');
+        if (storedUserInfo) {
+            const { name: storedName, surname: storedSurname } = JSON.parse(storedUserInfo);
+            this.name = storedName;
+            this.surname = storedSurname;
+        } else {
+            this.isModalVisible = true;
+        }
     }
-});
-
-const handleSubmit = () => {
-    if (name.value && surname.value) {
-        const userInfo = { name: name.value, surname: surname.value };
-        localStorage.setItem('userInfo', JSON.stringify(userInfo));
-        isModalVisible.value = false;
-        window.dispatchEvent(new Event('storage_userInfo'));
-    } else {
-        alert('Введите имя и фамилию');
-    }
-};
+}
 </script>
 
 <template>
