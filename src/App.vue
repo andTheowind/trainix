@@ -23,7 +23,7 @@ export default {
 </script>
 
 <template>
-  <header-layout :currentWindow="currentWindow" @updateWindow="setCurrentWindow" />
-  <main-layout :currentWindow="currentWindow" @updateWindow="setCurrentWindow" />
-  <footer-layout />
+  <HeaderLayout :currentWindow="currentWindow" @updateWindow="setCurrentWindow" />
+  <MainLayout :currentWindow="currentWindow" @updateWindow="setCurrentWindow" />
+  <FooterLayout />
 </template>
