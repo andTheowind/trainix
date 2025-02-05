@@ -3,18 +3,9 @@ export default {
     data() {
         return {
             navPages: [
-                {
-                    id: 1,
-                    title: 'Политика конфиденциальности'
-                },
-                {
-                    id: 2,
-                    title: 'Контакты'
-                },
-                {
-                    id: 3,
-                    title: 'Ещё'
-                }
+                { id: 1, title: 'Политика конфиденциальности' },
+                { id: 2, title: 'Контакты' },
+                { id: 3, title: 'Ещё' }
             ]
         }
     }

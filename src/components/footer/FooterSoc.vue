@@ -1,20 +1,10 @@
 <script>
-
 export default {
     data() {
         return {
             socialItems: [
-                {
-                    id: 1,
-                    icon: '/src/assets/icons/in-icon.svg',
-                    link: 'https://linkedin.com'
-                },
-                {
-                    id: 2,
-                    icon: '/src/assets/icons/vk-icon.svg',
-                    link: 'https://vk.com'
-                }
-
+                { id: 1, icon: '/src/assets/icons/in-icon.svg', link: 'https://linkedin.com' },
+                { id: 2, icon: '/src/assets/icons/vk-icon.svg', link: 'https://vk.com' }
             ]
         }
     }
