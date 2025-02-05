@@ -1,7 +1,7 @@
 <script setup>
-import FooterNav from '@/components/footer/FooterNav.vue';
-import FooterSoc from '@/components/footer/FooterSoc.vue';
-import FooterCopyright from '@/components/footer/FooterCopyright.vue';
+import FooterNav from '@/components/footer/footer-components/FooterNav.vue';
+import FooterSoc from '@/components/footer/footer-components/FooterSoc.vue';
+import FooterCopyright from '@/components/footer/footer-components/FooterCopyright.vue';
 </script>
 
 <template>
